@@ -30,6 +30,7 @@ btnVaciar.addEventListener("click", vaciarCarrito);
 
 let tablePokemon = document.getElementById("tablePokemon");
 let totalCarrito = document.getElementById("totalCarrito");
+let infoText = document.getElementById("infoText");
 
 /** CONSTRUCTOR DE PRODUCTOS */
 class Producto {
@@ -63,9 +64,9 @@ guardarLocal();
 
 // Agregar a pikachu al carrito
 function addPikachuCarrito() {
+	infoText.innerText = "Usted agrego el producto Pikachu";
 	let producto1 = JSON.parse(localStorage.getItem("1"));
 	carrito.push(producto1);
-	console.log(carrito);
 	let tr = document.createElement("tr");
 	tr.innerHTML = `<td>${producto1.nombre}</td>
 	<td>${producto1.precio}</td>`;
@@ -74,6 +75,7 @@ function addPikachuCarrito() {
 
 // Agregar a charmander al carrito
 function addCharmanderCarrito() {
+	infoText.innerText = "Usted agrego el producto Charmander";
 	let producto2 = JSON.parse(localStorage.getItem("2"));
 	carrito.push(producto2);
 	let tr = document.createElement("tr");
@@ -84,6 +86,7 @@ function addCharmanderCarrito() {
 
 // Agregar a espeon al carrito
 function addEspeonCarrito() {
+	infoText.innerText = "Usted agrego el producto Espeon";
 	let producto3 = JSON.parse(localStorage.getItem("3"));
 	carrito.push(producto3);
 	let tr = document.createElement("tr");
@@ -94,6 +97,7 @@ function addEspeonCarrito() {
 
 // Agregar a eevee al carrito
 function addEeveeCarrito() {
+	infoText.innerText = "Usted agrego el producto Eevee";
 	let producto4 = JSON.parse(localStorage.getItem("4"));
 	carrito.push(producto4);
 	let tr = document.createElement("tr");
@@ -105,8 +109,9 @@ function addEeveeCarrito() {
 function vaciarCarrito() {
 	tablePokemon.innerHTML = "";
 	totalCarrito.innerText = "Total: ";
+	infoText.innerText = "Usted vacio el carrito";
 }
 
 function comprarCarrito() {
-	alert(`Usted compro `);
+	infoText.innerText = "Usted compro el carrito";
 }
