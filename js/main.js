@@ -43,13 +43,13 @@ class Producto {
 
 /** ARRAY */
 const productos = [];
-let carrito = [];
+let carrito = 0;
 
 /** Push de productos al array "productos" */
-productos.push(new Producto("1", "Pikachu", "1300"));
-productos.push(new Producto("2", "Charmander", "1100"));
-productos.push(new Producto("3", "Espeon", "1000"));
-productos.push(new Producto("4", "Eevee", "980"));
+productos.push(new Producto("1", "Pikachu", 1300));
+productos.push(new Producto("2", "Charmander", 1100));
+productos.push(new Producto("3", "Espeon", 1000));
+productos.push(new Producto("4", "Eevee", 980));
 
 /** Almacenamiento del array dentro del Storage */
 const guardarLocal = (clave, valor) => {
@@ -66,49 +66,58 @@ guardarLocal();
 function addPikachuCarrito() {
 	infoText.innerText = "Usted agrego el producto Pikachu";
 	let producto1 = JSON.parse(localStorage.getItem("1"));
-	carrito.push(producto1);
+	carrito += producto1.precio;
+	console.log(carrito);
 	let tr = document.createElement("tr");
 	tr.innerHTML = `<td>${producto1.nombre}</td>
 	<td>${producto1.precio}</td>`;
 	tablePokemon.appendChild(tr);
+	totalCarrito.innerText = `Total: $${carrito}`;
 }
 
 // Agregar a charmander al carrito
 function addCharmanderCarrito() {
 	infoText.innerText = "Usted agrego el producto Charmander";
 	let producto2 = JSON.parse(localStorage.getItem("2"));
-	carrito.push(producto2);
+	carrito += producto2.precio;
+	console.log(carrito);
 	let tr = document.createElement("tr");
 	tr.innerHTML = `<td>${producto2.nombre}</td>
 	<td>${producto2.precio}</td>`;
 	tablePokemon.appendChild(tr);
+	totalCarrito.innerText = `Total: $${carrito}`;
 }
 
 // Agregar a espeon al carrito
 function addEspeonCarrito() {
 	infoText.innerText = "Usted agrego el producto Espeon";
 	let producto3 = JSON.parse(localStorage.getItem("3"));
-	carrito.push(producto3);
+	carrito += producto3.precio;
+	console.log(carrito);
 	let tr = document.createElement("tr");
 	tr.innerHTML = `<td>${producto3.nombre}</td>
 	<td>${producto3.precio}</td>`;
 	tablePokemon.appendChild(tr);
+	totalCarrito.innerText = `Total: $${carrito}`;
 }
 
 // Agregar a eevee al carrito
 function addEeveeCarrito() {
 	infoText.innerText = "Usted agrego el producto Eevee";
 	let producto4 = JSON.parse(localStorage.getItem("4"));
-	carrito.push(producto4);
+	carrito += producto4.precio;
+	console.log(carrito);
 	let tr = document.createElement("tr");
 	tr.innerHTML = `<td>${producto4.nombre}</td>
 	<td>${producto4.precio}</td>`;
 	tablePokemon.appendChild(tr);
+	totalCarrito.innerText = `Total: $${carrito}`;
 }
 
 function vaciarCarrito() {
+	carrito = 0;
 	tablePokemon.innerHTML = "";
-	totalCarrito.innerText = "Total: ";
+	totalCarrito.innerText = "Total: $0";
 	infoText.innerText = "Usted vacio el carrito";
 }
 
