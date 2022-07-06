@@ -122,5 +122,7 @@ function vaciarCarrito() {
 }
 
 function comprarCarrito() {
-	infoText.innerText = "Usted compro el carrito";
+	carrito <= 0
+		? (infoText.innerText = "El carrito está vacío")
+		: (infoText.innerText = "Usted compro el carrito");
 }
