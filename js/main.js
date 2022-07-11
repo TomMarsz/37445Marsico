@@ -115,14 +115,60 @@ function addEeveeCarrito() {
 }
 
 function vaciarCarrito() {
-	carrito = 0;
-	tablePokemon.innerHTML = "";
-	totalCarrito.innerText = "Total: $0";
-	infoText.innerText = "Usted vacio el carrito";
+	if (carrito !== 0) {
+		Swal.fire({
+			title: "Estás seguro?",
+			text: "Esta acción no podrá ser revertida!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			cancelButtonText: "Cancelar",
+			confirmButtonText: "Si, vaciar carrito!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: "Vaciado!",
+					text: "El carrito fue vaciado con éxito!",
+					icon: "success",
+					confirmButtonColor: "#3085d6",
+				});
+				carrito = 0;
+				tablePokemon.innerHTML = "";
+				totalCarrito.innerText = "Total: $0";
+			}
+		});
+		infoText.innerText = "Usted vacio el carrito";
+	} else {
+		infoText.innerText = "¡El carrito está vacío!";
+		Swal.fire({
+			icon: "error",
+			title: "¡El carrito está vacío!",
+			showConfirmButton: false,
+			timer: 1500,
+		});
+	}
 }
 
 function comprarCarrito() {
-	carrito <= 0
-		? (infoText.innerText = "El carrito está vacío")
-		: (infoText.innerText = "Usted compro el carrito");
+	if (carrito <= 0) {
+		infoText.innerText = "¡El carrito está vacío!";
+		Swal.fire({
+			icon: "error",
+			title: "¡El carrito está vacío!",
+			showConfirmButton: false,
+			timer: 1500,
+		});
+	} else {
+		infoText.innerText = "¡Usted compro el carrito!";
+		Swal.fire({
+			icon: "success",
+			title: "¡Usted compro el carrito!",
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		carrito = 0;
+		tablePokemon.innerHTML = "";
+		totalCarrito.innerText = "Total: $0";
+	}
 }
