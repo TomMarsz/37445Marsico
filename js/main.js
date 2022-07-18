@@ -187,6 +187,7 @@ function comprarCarrito() {
 }
 
 function mostrarPokedex1() {
+	tablePokedex.innerHTML = "";
 	fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 		.then((resp) => resp.json())
 		.then((data) => {
@@ -198,6 +199,7 @@ function mostrarPokedex1() {
 		});
 }
 function mostrarPokedex2() {
+	tablePokedex.innerHTML = "";
 	fetch("https://pokeapi.co/api/v2/pokemon?offset=151&limit=100")
 		.then((resp) => resp.json())
 		.then((data) => {
@@ -209,6 +211,7 @@ function mostrarPokedex2() {
 		});
 }
 function mostrarPokedex3() {
+	tablePokedex.innerHTML = "";
 	fetch("https://pokeapi.co/api/v2/pokemon?offset=251&limit=135")
 		.then((resp) => resp.json())
 		.then((data) => {
