@@ -28,6 +28,19 @@ btnComprar.addEventListener("click", comprarCarrito);
 let btnVaciar = document.getElementById("btnVaciar");
 btnVaciar.addEventListener("click", vaciarCarrito);
 
+let btnPokedex1 = document.getElementById("btnPokedex1");
+btnPokedex1.addEventListener("click", mostrarPokedex1);
+
+let btnPokedex2 = document.getElementById("btnPokedex2");
+btnPokedex2.addEventListener("click", mostrarPokedex2);
+
+let btnPokedex3 = document.getElementById("btnPokedex3");
+btnPokedex3.addEventListener("click", mostrarPokedex3);
+
+let btnVaciarPokedex = document.getElementById("btnVaciarPokedex");
+btnVaciarPokedex.addEventListener("click", vaciarPokedex);
+
+let tablePokedex = document.getElementById("tablePokedex");
 let tablePokemon = document.getElementById("tablePokemon");
 let totalCarrito = document.getElementById("totalCarrito");
 let infoText = document.getElementById("infoText");
@@ -171,4 +184,41 @@ function comprarCarrito() {
 		tablePokemon.innerHTML = "";
 		totalCarrito.innerText = "Total: $0";
 	}
+}
+
+function mostrarPokedex1() {
+	fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+		.then((resp) => resp.json())
+		.then((data) => {
+			data.results.forEach((post) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${post.name.toUpperCase()}</td>`;
+				tablePokedex.append(tr);
+			});
+		});
+}
+function mostrarPokedex2() {
+	fetch("https://pokeapi.co/api/v2/pokemon?offset=151&limit=100")
+		.then((resp) => resp.json())
+		.then((data) => {
+			data.results.forEach((post) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${post.name.toUpperCase()}</td>`;
+				tablePokedex.append(tr);
+			});
+		});
+}
+function mostrarPokedex3() {
+	fetch("https://pokeapi.co/api/v2/pokemon?offset=251&limit=135")
+		.then((resp) => resp.json())
+		.then((data) => {
+			data.results.forEach((post) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${post.name.toUpperCase()}</td>`;
+				tablePokedex.append(tr);
+			});
+		});
+}
+function vaciarPokedex() {
+	tablePokedex.innerHTML = "";
 }
